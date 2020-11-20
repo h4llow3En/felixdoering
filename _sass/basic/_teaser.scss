@@ -1,0 +1,22 @@
+.teaser {
+    height: 100vh;
+    color: $primary-color;
+    .shape {
+        position: relative;
+        height: 100%;
+        position: relative;
+        background-color: none;
+        clip-path: polygon(0 0,
+                55vw 0,
+                calc(55vw + 20rem) 100%,
+                0% 100%);
+
+        @media #{$breakpoint-large} {
+            background-color: $secondary-color;
+        }
+    }
+
+    // img {
+
+    // }
+}
