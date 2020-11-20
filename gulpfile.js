@@ -15,14 +15,16 @@ var paths = {
 	theme: {
 		styles: '_sass',
 		icons: '_icons',
-		scripts: '_js'
+		scripts: '_js',
+		images: '_images'
 	},
 	assets: {
 		base: 'assets',
 		css: 'assets/css',
 		icons: 'assets/icons',
 		fonts: 'assets/webfonts',
-		js: 'assets/js'
+		js: 'assets/js',
+		images: 'assets/images'
 	},
 	components: {
 		fontawesome: 'node_modules/@fortawesome/fontawesome-free',
@@ -47,14 +49,20 @@ gulp.task('styles:prepare', function () {
 	return gulp.src([
 		paths.components.fontawesome + '/css/fontawesome.css',
 		paths.components.fontawesome + '/css/solid.css',
+		paths.components.fontawesome + '/css/brands.css',
 		paths.components.normalizecss
 	])
 		.pipe(gulp.dest(paths.theme.styles + '/vendor'));
 });
 
 gulp.task('styles:copyVendorResources', function () {
-	return gulp.src([paths.components.fontawesome + '/webfonts/fa-solid*'])
+	return gulp.src([paths.components.fontawesome + '/webfonts/fa-solid*',paths.components.fontawesome + '/webfonts/fa-brands*'])
 		.pipe(gulp.dest(paths.assets.fonts));
+});
+
+gulp.task('images', function () {
+	return gulp.src([paths.theme.images + '/*'])
+		.pipe(gulp.dest(paths.assets.images));
 });
 
 gulp.task('styles', gulp.series('styles:prepare', 'styles:build', 'styles:copyVendorResources'));
@@ -161,5 +169,5 @@ gulp.task('generate-favicon', function (done) {
 	});
 });
 gulp.task('clean', gulp.parallel('clean:assets', 'clean:vendor'))
-gulp.task('build', gulp.series('clean', gulp.parallel('styles', 'scripts', 'generate-favicon')));
-gulp.task('default', gulp.series(gulp.parallel('styles', 'scripts'), gulp.parallel('watch:styles', 'watch:scripts')));
+gulp.task('build', gulp.series('clean', gulp.parallel('styles', 'scripts', 'images', 'generate-favicon')));
+gulp.task('default', gulp.series(gulp.parallel('styles', 'scripts', 'images'), gulp.parallel('watch:styles', 'watch:scripts')));

@@ -4,19 +4,46 @@
     .shape {
         position: relative;
         height: 100%;
-        position: relative;
-        background-color: none;
+        background-color: transparent;
         clip-path: polygon(0 0,
-                55vw 0,
-                calc(55vw + 20rem) 100%,
+                62vw 0,
+                calc(62vw + 15rem) 100%,
                 0% 100%);
 
         @media #{$breakpoint-large} {
             background-color: $secondary-color;
         }
     }
-
-    // img {
-
-    // }
+    .teasercontent {
+        left: 10%;
+        position: absolute;
+        top: 45%;
+        text-align: left;
+        vertical-align: middle;
+        b {
+            font-size: 7rem;
+            font-weight: 900;
+        }
+        p {
+            margin-top: 3rem;
+            font-size: 4rem;
+        }
+        a {
+            text-decoration: none;
+        }
+        ul {
+            margin-top: 6rem;
+            list-style: none;
+            display: flex;
+            li {
+                font-size: 1.5rem;
+                overflow: hidden;
+                padding-right: 1rem;
+            }
+        }
+    }
+    img {
+        float: right;
+        display: inline;
+    }
 }

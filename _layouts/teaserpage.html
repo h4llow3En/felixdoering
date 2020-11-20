@@ -3,9 +3,37 @@ layout: default
 ---
 <div class="teaser">
     <div class="shape">
-        <b>Felix Döring</b>
-        Software Developer</div>
-</div>
+        <img src="/assets/images/background.jpeg">
+        <div class="teasercontent">
+            <b>{{ site.title }}</b>
+            <p>Software Developer</p>
+            <br/>
+            <ul>
+                {% if site.github_username %}
+                <li>
+                    <a href="https://github.com/{{ site.github_username }}" target="_blank"><i class="fab fa-github"></i> Github</a>
+                </li>
+                {% endif %}
+                {% if site.twitter_username %}
+                <li>
+                    <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+                </li>
+                {% endif %}
+                {% if site.telegram_username %}
+                <li>
+                    <a href="https://t.me/{{ site.telegram_username }}" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
+                </li>
+                {% endif %}
+                {% if site.email %}
+                <li>
+                    <a href="mailto:{{ site.email }}" target="_blank"><i class="fas fa-envelope"></i> Email</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+
+    </div>
+    
 </div>
 <section class="content">
     {{ content }}
