@@ -29,9 +29,11 @@
         <nav>
             <ul>
                 {% for page in site.pages %}
+                {% if page.title != "titles.error" %}
                 <li>
                     <a href="{{ page.url | prepend: site.baseurl }}">{% t page.title %}</a>
                 </li>
+                {% endif %}
                 {% endfor %}
             </ul>
         </nav>
